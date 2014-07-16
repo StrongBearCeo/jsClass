@@ -3,8 +3,7 @@ expect = must
 
 describe "Node module as a singleton", ->
   testObject = require '../module'
-  beforeEach ->
-    return
+
   describe "private properties/methods",->
     it 'cannot be accessed from outside', ->
       expect testObject._privateProperty

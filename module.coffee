@@ -10,14 +10,11 @@ _privateMethod = (param) ->
 module.exports =
   # public members
   publicProperty : 2
-  publicMethod : (param) ->
-    if typeof param is "function"
-      param()
-    else
-      @publicProperty = param
-    return
+  publicMethod : (@publicProperty) ->
+
   setPrivateProperty : (value) ->
     _privateProperty = value
+    return
 
   getPrivateProperty : ->
     _privateProperty

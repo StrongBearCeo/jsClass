@@ -11,8 +11,22 @@ class Class
     return
   _privateProperty = 0
 
+  # static private property
+  # @_count = Class._count
+  # although Class._count can be accessed directly,
+  # we never do so because of naming convention
+  @_count = 0
+
+  # static public method
+  # @staticMethod_countObjects = Class.staticMethod_countObjects
+  # in this context, this = Class
+  # therefore, @_count = this.count = Class._count
+  @staticMethod_countObjects = ->
+    @_count
+
   constructor: (privateProperty, @publicProperty) ->
     _privateProperty = privateProperty
+    Class._count++
 
   # public methods
   # note that we use ':' to define public methods

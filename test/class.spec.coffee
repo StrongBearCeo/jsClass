@@ -3,8 +3,8 @@ expect = must
 
 describe "Coffeescript class", ->
   testObject = null
+  Class = require '../class'
   beforeEach ->
-    Class = require '../class'
     testObject = new Class 1, 2
   describe "private properties/methods",->
     it 'cannot be accessed from outside', ->
@@ -31,3 +31,10 @@ describe "Coffeescript class", ->
       callback = spy()
       testObject.callPrivateMethod(callback)
       assert callback.called
+
+  describe 'static method', ->
+    it 'can be access directly via class name', ->
+      Class.staticMethod_countObjects().must.be.at.least 1
+    it 'cannot be called from object instance', ->
+      expect testObject.staticMethod_countObjects
+        .be.falsy()

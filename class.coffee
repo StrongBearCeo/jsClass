@@ -1,6 +1,8 @@
 class Class
 
   # private members
+  # note: '=' is used to define private members
+  # naming convention for private members is _camelCase
   _privateMethod = (param) ->
     if typeof param is "function"
       param()
@@ -36,6 +38,8 @@ class Class
       return
 
   # public methods
+  # note that we use ':' to define public methods
+  # naming convention for private members is camelCase
   publicMethod : (param) ->
     if typeof param is "function"
       param()

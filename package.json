@@ -1,0 +1,16 @@
+{
+  "name": "jsClass",
+  "version": "0.0.1",
+  "description": "Basic understanding about javascript classes",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Hung Vo",
+  "license": "ISC",
+  "devDependencies": {
+    "unit.js": "^0.1.8",
+    "coffee-script": "^1.7.1",
+    "mocha": "^1.20.1"
+  }
+}

@@ -12,6 +12,11 @@ describe "Coffeescript class", ->
         .be.falsy()
       expect testObject._privateMethod
         .be.falsy()
+      # ensure the private members do not leak out to global scope
+      expect typeof _privateProperty
+        .be 'undefined'
+      expect typeof _privateMethod
+        .be 'undefined'
 
   describe "public properties/methods", ->
     it 'can be accessed from outside', ->
@@ -25,25 +30,4 @@ describe "Coffeescript class", ->
     it 'can access private methods', ->
       callback = spy()
       testObject.callPrivateMethod(callback)
-      assert callback.called
-
-  describe "privileged method", ->
-    it 'can access private properties', ->
-      testObject.privilegedMethod_getPrivateProperty().must.be 1
-      testObject.privilegedMethod_setPrivateProperty(3)
-      testObject.privilegedMethod_getPrivateProperty().must.be 3
-
-    it 'can access public properties', ->
-      testObject.privilegedMethod_getPublicProperty().must.be 2
-      testObject.privilegedMethod_setPublicProperty(3)
-      testObject.privilegedMethod_getPublicProperty().must.be 3
-
-    it 'can access private methods', ->
-      callback = spy()
-      testObject.privilegedMethod_callPrivateMethod(callback)
-      assert callback.called
-
-    it 'can access public method', ->
-      callback = spy()
-      testObject.privilegedMethod_callPublicMethod(callback)
       assert callback.called

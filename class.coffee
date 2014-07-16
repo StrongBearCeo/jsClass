@@ -14,29 +14,6 @@ class Class
   constructor: (privateProperty, @publicProperty) ->
     _privateProperty = privateProperty
 
-    # privileged methods
-    @privilegedMethod_callPrivateMethod = (callback) ->
-      _privateMethod callback
-      return
-
-    @privilegedMethod_getPrivateProperty = ->
-      _privateProperty
-
-    @privilegedMethod_setPrivateProperty = (value) ->
-      _privateProperty = value
-      return
-
-    @privilegedMethod_getPublicProperty = ->
-      @publicProperty
-
-    @privilegedMethod_setPublicProperty = (value) ->
-      @publicProperty = value
-      return
-
-    @privilegedMethod_callPublicMethod = (callback) ->
-      @publicMethod callback
-      return
-
   # public methods
   # note that we use ':' to define public methods
   # naming convention for private members is camelCase
@@ -48,21 +25,12 @@ class Class
     return
 
   getPrivateProperty : ->
-    if typeof _privateProperty isnt "undefined"
-      return _privateProperty
-    else if typeof @_privateProperty isnt "undefined"
-      return @_privateProperty
-    else
-      throw ("Cannot access private property")
-    return
+    return _privateProperty
+
 
   callPrivateMethod : (callback) ->
-    if typeof _privateMethod isnt "undefined"
-      _privateMethod callback
-    else if typeof @_privateMethod isnt "undefined"
-      @_privateMethod callback
-    else
-      throw ("Cannot call private method")
+    _privateMethod callback
     return
+
 
 module.exports = Class

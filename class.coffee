@@ -30,7 +30,7 @@ class Class
 
   # public methods
   # note that we use ':' to define public methods
-  # naming convention for private members is camelCase
+  # naming convention for public members is camelCase
   publicMethod : (param) ->
     if typeof param is "function"
       param()

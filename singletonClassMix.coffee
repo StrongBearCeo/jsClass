@@ -1,3 +1,8 @@
+# NOTE: here we are using 'singleton' terminology,
+# but it is actually synonym to 'static'
+# the two terms can be used interchangably
+
+# singleton members
 _privateSingletonProperty = 0
 _privateSingletonMethod = (param) ->
   if typeof param is "function"
@@ -19,22 +24,20 @@ class Class
     return
   _privateProperty = 0
 
-  # static private property
-  # @_count = Class._count
-  # although Class._count can be accessed directly,
-  # we never do so because of naming convention
-  @_count = 0
+  # static public property
+  # @count = Class.count
+  @count = 0
 
   # static public method
   # @staticMethod_countObjects = Class.staticMethod_countObjects
   # in this context, this = Class
   # therefore, @_count = this.count = Class._count
   @staticMethod_countObjects = ->
-    @_count
+    @count
 
   constructor: (privateProperty, @publicProperty) ->
     _privateProperty = privateProperty
-    Class._count++
+    Class.count++
 
   # public methods
   # note that we use ':' to define public methods
@@ -48,7 +51,7 @@ class Class
     _privateMethod callback
     return
 
-  # singleton methods
+  # singleton members
   @publicSingletonProperty : 0
   @publicSingletonMethod : (@publicSingletonProperty) ->
 

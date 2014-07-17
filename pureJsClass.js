@@ -10,17 +10,17 @@ var Class = (function () {
   }
 
   // static members
-  Class._count = 0;
+  Class.count = 0;
 
   Class.staticMethod_countObjects = function () {
-    return this._count;
+    return this.count;
   };
 
   // constructor
   function Class(privateProperty, publicProperty) {
     _privateProperty = privateProperty;
     this.publicProperty = publicProperty;
-    Class._count++;
+    Class.count++;
   }
 
   // public methods

@@ -1,7 +1,7 @@
 {stub, dump, mock, must, assert, spy} = require 'unit.js'
 expect = must
 
-describe "Coffeescript class", ->
+describe "pure Javascript class", ->
   testObject = null
   Class = require '../pureJsClass'
   beforeEach ->

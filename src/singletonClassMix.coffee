@@ -31,7 +31,7 @@ class Class
   # static public method
   # @staticMethod_countObjects = Class.staticMethod_countObjects
   # in this context, this = Class
-  # therefore, @_count = this.count = Class._count
+  # therefore, @count = this.count = Class.count
   @staticMethod_countObjects = ->
     @count
 

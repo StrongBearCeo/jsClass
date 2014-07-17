@@ -3,7 +3,7 @@ expect = must
 
 describe "Coffeescript class", ->
   testObject = null
-  Class = require '../class'
+  Class = require '../src/class'
   beforeEach ->
     testObject = new Class 1, 2
   describe "private properties/methods", ->

@@ -3,7 +3,7 @@ expect = must
 
 describe "pure Javascript class", ->
   testObject = null
-  Class = require '../pureJsClass'
+  Class = require '../src/pureJsClass'
   beforeEach ->
     testObject = new Class 1, 2
   describe "private properties/methods", ->

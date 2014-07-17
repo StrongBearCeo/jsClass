@@ -4,7 +4,7 @@ expect = must
 describe "Node module as both class and singleton", ->
   describe 'as normal class', ->
     testObject = null
-    Class = require '../singletonClassMix'
+    Class = require '../src/singletonClassMix'
     beforeEach ->
       testObject = new Class 1, 2
     describe "private properties/methods", ->
@@ -36,7 +36,7 @@ describe "Node module as both class and singleton", ->
         .not.exist()
 
   describe 'as singleton', ->
-    singleton = require '../singletonClassMix'
+    singleton = require '../src/singletonClassMix'
 
     describe "private properties/methods", ->
       it 'cannot be accessed from outside', ->
@@ -61,7 +61,7 @@ describe "Node module as both class and singleton", ->
         assert callback.called
 
   describe 'relationship between members of singleton and normal class ', ->
-    singleton = Class = require '../singletonClassMix'
+    singleton = Class = require '../src/singletonClassMix'
     instanceObject = new Class 1, 2
     describe 'singleton', ->
       it 'cannot access instance private members', ->

@@ -2,7 +2,7 @@
 expect = must
 
 describe "Node module as a singleton", ->
-  testObject = require '../module'
+  testObject = require '../src/module'
 
   describe "private properties/methods", ->
     it 'cannot be accessed from outside', ->

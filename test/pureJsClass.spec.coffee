@@ -6,12 +6,12 @@ describe "Javasript class", ->
   beforeEach ->
     Class = require '../pureJsClass'
     testObject = new Class 1, 2
-  describe "private properties/methods",->
+  describe "private properties/methods", ->
     it 'cannot be accessed from outside', ->
       expect testObject._privateProperty
-        .be.falsy()
+      .be.falsy()
       expect testObject._privateMethod
-        .be.falsy()
+      .be.falsy()
 
   describe "public properties/methods", ->
     it 'can be accessed from outside', ->

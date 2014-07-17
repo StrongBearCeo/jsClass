@@ -6,17 +6,17 @@ describe "Coffeescript class", ->
   Class = require '../class'
   beforeEach ->
     testObject = new Class 1, 2
-  describe "private properties/methods",->
+  describe "private properties/methods", ->
     it 'cannot be accessed from outside', ->
       expect testObject._privateProperty
-        .be.falsy()
+      .be.falsy()
       expect testObject._privateMethod
-        .be.falsy()
+      .be.falsy()
       # ensure the private members do not leak out to global scope
       expect typeof _privateProperty
-        .be 'undefined'
+      .be 'undefined'
       expect typeof _privateMethod
-        .be 'undefined'
+      .be 'undefined'
 
   describe "public properties/methods", ->
     it 'can be accessed from outside', ->
@@ -37,4 +37,4 @@ describe "Coffeescript class", ->
       Class.staticMethod_countObjects().must.be.at.least 1
     it 'cannot be called from object instance', ->
       expect testObject.staticMethod_countObjects
-        .be.falsy()
+      .be.falsy()

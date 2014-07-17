@@ -31,20 +31,13 @@ class Class
   # public methods
   # note that we use ':' to define public methods
   # naming convention for public members is camelCase
-  publicMethod : (param) ->
-    if typeof param is "function"
-      param()
-    else
-      @publicProperty = param
-    return
+  publicMethod : (@publicProperty) ->
 
   getPrivateProperty : ->
-    return _privateProperty
-
+    _privateProperty
 
   callPrivateMethod : (callback) ->
     _privateMethod callback
     return
-
 
 module.exports = Class

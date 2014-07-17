@@ -9,9 +9,9 @@ describe "Javasript class", ->
   describe "private properties/methods", ->
     it 'cannot be accessed from outside', ->
       expect testObject._privateProperty
-      .be.falsy()
+      .not.exist()
       expect testObject._privateMethod
-      .be.falsy()
+      .not.exist()
 
   describe "public properties/methods", ->
     it 'can be accessed from outside', ->

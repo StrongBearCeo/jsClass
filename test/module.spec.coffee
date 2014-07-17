@@ -7,14 +7,9 @@ describe "Node module as a singleton", ->
   describe "private properties/methods", ->
     it 'cannot be accessed from outside', ->
       expect testObject._privateProperty
-      .be.falsy()
+      .not.exist()
       expect testObject._privateMethod
-      .be.falsy()
-      # ensure the private members do not leak out to global scope
-      expect typeof _privateProperty
-      .be 'undefined'
-      expect typeof _privateMethod
-      .be 'undefined'
+      .not.exist()
 
   describe "public properties/methods", ->
     it 'can be accessed from outside', ->

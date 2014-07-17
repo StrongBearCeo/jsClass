@@ -1,10 +1,10 @@
 {stub, dump, mock, must, assert, spy} = require 'unit.js'
 expect = must
 
-describe "Javasript class", ->
+describe "Coffeescript class", ->
   testObject = null
+  Class = require '../pureJsClass'
   beforeEach ->
-    Class = require '../pureJsClass'
     testObject = new Class 1, 2
   describe "private properties/methods", ->
     it 'cannot be accessed from outside', ->
@@ -19,29 +19,17 @@ describe "Javasript class", ->
       testObject.publicMethod(3)
       testObject.publicProperty.must.be 3
 
-    it 'cannot access private properties', ->
-      testObject.getPrivateProperty.must.throw()
-
-    it 'cannot access private methods', ->
-      testObject.callPrivateMethod.must.throw()
-
-  describe "privileged method", ->
     it 'can access private properties', ->
-      testObject.privilegedMethod_getPrivateProperty().must.be 1
-      testObject.privilegedMethod_setPrivateProperty(3)
-      testObject.privilegedMethod_getPrivateProperty().must.be 3
-
-    it 'can access public properties', ->
-      testObject.privilegedMethod_getPublicProperty().must.be 2
-      testObject.privilegedMethod_setPublicProperty(3)
-      testObject.privilegedMethod_getPublicProperty().must.be 3
+      testObject.getPrivateProperty().must.be 1
 
     it 'can access private methods', ->
       callback = spy()
-      testObject.privilegedMethod_callPrivateMethod(callback)
+      testObject.callPrivateMethod(callback)
       assert callback.called
 
-    it 'can access public method', ->
-      callback = spy()
-      testObject.privilegedMethod_callPublicMethod(callback)
-      assert callback.called
+  describe 'static method', ->
+    it 'can be access directly via class name', ->
+      Class.staticMethod_countObjects().must.be.at.least 1
+    it 'cannot be called from object instance', ->
+      expect testObject.staticMethod_countObjects
+      .not.exist()
